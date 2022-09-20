@@ -10,6 +10,7 @@ import java.io.Serializable;
 @Builder
 @AllArgsConstructor
 public class User implements Serializable {
+	private int id;
 	private String name;
 	private String course;
 	private String email;

@@ -12,23 +12,21 @@ import java.util.List;
 
 public class UserData {
 
-    public static User getUserJsonData() {
-        return User.builder()
-                .name("Ivanov Ivan")
-                .course("Java QA")
-                .email("Ivan_Ivanov@gmail.com")
-                .age(23)
-                .build();
+    public static List<User> userData() {
+        return List.of(
+                User.builder().id(1).name("Ivanov Ivan").course("Java QA").email("Ivan_Ivanov@gmail.com").age(23).build(),
+                User.builder().id(2).name("Petrov Petr").course("Python QA").email("Petr_Petrov@gmail.com").age(26).build()
+        );
     }
 
-    public static Score getScoreJsonData() {
+    public static Score scoreData() {
         return Score.builder()
                 .name("Ivanov Ivan")
                 .score(78)
                 .build();
     }
 
-    public static List<Course> getCourseJsonData() {
+    public static List<Course> courseData() {
         return List.of(
                 Course.builder().name("Java QA").price(10000).build(),
                 Course.builder().name("Java").price(12000).build()

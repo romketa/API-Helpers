@@ -27,12 +27,22 @@ public class MockServerUserBehavior implements TestBehavior {
                 .send()
                 .response()
                 .message()
-                .type("application/json").body("{\n" +
+                .type("application/json").body("[\n" +
+                        "{\n" +
+                        "\"id\":1,\n" +
                         "\"name\":\"Ivanov Ivan\",\n" +
                         "\"course\":\"Java QA\",\n" +
                         "\"email\":\"Ivan_Ivanov@gmail.com\",\n" +
                         "\"age\": 23\n" +
-                        "}")
+                        "},\n" +
+                        "{\n" +
+                        "\"id\":2,\n" +
+                        "\"name\":\"Petrov Petr\",\n" +
+                        "\"course\":\"Python QA\",\n" +
+                        "\"email\":\"Petr_Petrov@gmail.com\",\n" +
+                        "\"age\": 26\n" +
+                        "}\n" +
+                        "]")
         );
 
     }

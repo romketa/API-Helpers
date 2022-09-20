@@ -24,7 +24,7 @@ public class UserSendBehavior implements TestBehavior {
         testActionRunner.$(http()
                 .client("restClient")
                 .send()
-                .get("users/get/")
+                .get()
                 .path(path)
                 .fork(true)
         );
