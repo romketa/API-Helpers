@@ -1,7 +1,14 @@
 package pojo;
 
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+
 import java.io.Serializable;
 
+@Data
+@AllArgsConstructor
+@Builder
 public class Course implements Serializable {
 	private int price;
 	private String name;
