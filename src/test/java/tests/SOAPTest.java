@@ -3,8 +3,8 @@ package tests;
 import com.consol.citrus.annotations.CitrusTest;
 import com.consol.citrus.context.TestContext;
 import com.consol.citrus.testng.TestNGCitrusSupport;
-import com.dataaccess.webservicesserver.NumberToDollars;
-import com.dataaccess.webservicesserver.NumberToDollarsResponse;
+import webservicesserver.NumberToDollars;
+import webservicesserver.NumberToDollarsResponse;
 import features.CustomMarshaller;
 import org.testng.annotations.Test;
 
@@ -12,9 +12,10 @@ import static com.consol.citrus.ws.actions.SoapActionBuilder.soap;
 import static pojo.NumbersData.getNumberToDollarsRequest;
 import static pojo.NumbersData.getNumberToDollarsResponse;
 
+
 public class SOAPTest extends TestNGCitrusSupport {
 
-    public TestContext context;
+    private TestContext context;
 
     @Test(description = "Получение информации о пользователе", enabled=true)
     @CitrusTest(name = "soap")

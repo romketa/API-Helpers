@@ -1,5 +1,6 @@
 package tests;
 
+
 import behavior.MockServerCourseBehavior;
 import behavior.MockServerScoreBehavior;
 import behavior.MockServerUserBehavior;
@@ -8,10 +9,10 @@ import com.consol.citrus.annotations.CitrusTest;
 import com.consol.citrus.context.TestContext;
 import com.consol.citrus.message.builder.ObjectMappingPayloadBuilder;
 import com.consol.citrus.testng.spring.TestNGCitrusSpringSupport;
-import pojo.User;
-import pojo.UserData;
+import org.testng.annotations.BeforeTest;
 import org.springframework.http.HttpStatus;
 import org.testng.annotations.Test;
+import pojo.UserData;
 
 
 import static com.consol.citrus.http.actions.HttpActionBuilder.http;
@@ -19,13 +20,18 @@ import static com.consol.citrus.validation.json.JsonMessageValidationContext.Bui
 
 public class HttpTest extends TestNGCitrusSpringSupport {
 
-    TestContext context;
+    private TestContext context;
+
+    @BeforeTest
+    public void setUp(){
+        this.context = citrus.getCitrusContext().createTestContext();
+    }
+
 
     @Test(description = "Проверка метода /user/get/all получения всех юзеров")
     @CitrusTest
     public void getAllUsersTest() {
 
-        this.context = citrus.getCitrusContext().createTestContext();
         $(applyBehavior(new UserSendBehavior(context, "/user/get/all")));
         $(applyBehavior(new MockServerUserBehavior(context)));
         $(http()
@@ -46,7 +52,6 @@ public class HttpTest extends TestNGCitrusSpringSupport {
     public void getScoreUserTest() {
 
         int UserId = UserData.userData().get(0).getId();
-        this.context = citrus.getCitrusContext().createTestContext();
         $(applyBehavior(new UserSendBehavior(context, "/user/get/" + UserId)));
         $(applyBehavior(new MockServerScoreBehavior(context)));
         $(http()
@@ -66,7 +71,6 @@ public class HttpTest extends TestNGCitrusSpringSupport {
     @CitrusTest
     public void getCourseUserTest() {
 
-        this.context = citrus.getCitrusContext().createTestContext();
         $(applyBehavior(new UserSendBehavior(context, "/course/get/all")));
         $(applyBehavior(new MockServerCourseBehavior(context)));
         $(http()
